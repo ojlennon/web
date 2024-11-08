@@ -18,7 +18,7 @@ export default function Home() {
       }}>
         <Image
             src="/michigan.png"
-            alt="Picture of the author"
+            alt="Michigan Logo"
             width={50}
             height={50}
             quality={100}
