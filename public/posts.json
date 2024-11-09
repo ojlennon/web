@@ -1,0 +1,28 @@
+{
+    "posts": [
+        {
+            "title": "Looking for Backend Dev",
+            "text": "I need someone who knows Express",
+            "creator": {
+                "image": "/owen.jpeg",
+                "name": "Owen Lennon"
+            }
+        },
+        {
+            "title": "Testing Code",
+            "text": "hooray",
+            "creator": {
+                "image": "/owen.jpeg",
+                "name": "Kiera Crawford <3"
+            }
+        },
+        {
+            "title": "Test 3",
+            "text": "This is the third test",
+            "creator": {
+                "image": "/owen.jpeg",
+                "name": "Melina Proestos"
+            }
+        }
+    ]
+}
