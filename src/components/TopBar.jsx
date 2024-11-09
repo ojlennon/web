@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function TopBar() {
     return (<div
@@ -27,13 +28,14 @@ export function TopBar() {
                 quality={100}
             />
             <p>
-                <a href="/">Home</a>
+                <Link href="/">Home</Link>
             </p>
             <p>
-                <a href="">About</a>
+                {/* <a href="">About</a> */}
+                <Link href='/about'>About</Link>
             </p>
             <p>
-                <a href="/projects">Projects</a>
+                <Link href="/projects">Projects</Link>
             </p>
         </div>
         <div
@@ -46,10 +48,10 @@ export function TopBar() {
             }}
         >
             <p>
-                <a href="/login">Login</a>
+                <Link href="/login">Login</Link>
             </p>
             <p>
-                <a href="">Sign Up</a>
+                <Link href="">Sign Up</Link>
             </p>
         </div>
     </div>
