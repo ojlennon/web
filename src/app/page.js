@@ -6,6 +6,7 @@ import { useState, useEffect, use, Suspense } from "react";
 import { TopBar } from "@/components/TopBar";
 import PostList from "@/components/PostList";
 import Layout from "@/components/layout";
+import Login from "@/pages/login";
 
 
 export default function Home() {
@@ -18,7 +19,8 @@ export default function Home() {
   return (
     <div>
       <Layout>
-      <PostList />
+        <PostList />
+        <Login/>
       </Layout>
 
       {/* <div id="aboutUs">
