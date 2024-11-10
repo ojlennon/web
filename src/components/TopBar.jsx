@@ -51,7 +51,7 @@ export function TopBar() {
                 <Link href="/login">Login</Link>
             </p>
             <p>
-                <Link href="">Sign Up</Link>
+                <Link href="/signup">Sign Up</Link>
             </p>
         </div>
     </div>
