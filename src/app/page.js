@@ -7,6 +7,7 @@ import { TopBar } from "@/components/TopBar";
 import PostList from "@/components/PostList";
 import Layout from "@/components/layout";
 import Login from "@/components/LoginForm";
+import LoginPage from "@/pages/login";
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
   const handleClick = () => {
     router.push("/contact");
   };
+
 
   return (
     <div>

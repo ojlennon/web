@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 export function TopBar() {
+    async function signOut() {
+        const { error } = await supabase.auth.signOut()
+      }
+      
     return (<div
         style={{
             display: "flex",
@@ -53,6 +58,7 @@ export function TopBar() {
             <p>
                 <Link href="/signup">Sign Up</Link>
             </p>
+            <button onClick={signOut}>Sign Out</button>
         </div>
     </div>
     );
