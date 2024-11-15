@@ -6,23 +6,24 @@ export default function Post(props) {
   // console.log(props.author_id);
   useEffect(() => {
     const retrieve_user = async () => {
-      const { data, error } = await supabase.from('UserData')
-      .select('*')
+      const { data, error } = await supabase
+        .from("UserData")
+        .select("*")
         .eq("user_id", props.author_id);
-      
-        if (error) {
-          console.log(error);
+
+      if (error) {
+        console.log(error);
+      } else {
+        if (data) {
+          setAuthor(data[0]);
+          // console.log(data[0]);
         } else {
-          if (data) {
-            setAuthor(data[0]);
-            console.log(data[0])
-          } else {
-            console.log(data)
-          }
+          console.log(data);
         }
+      }
     };
     retrieve_user();
-  });
+  },[]);
 
   return (
     <div style={{ background: "#A9A9A9", borderRadius: "1%" }}>
@@ -45,7 +46,14 @@ export default function Post(props) {
             src={props.creator.image}
             
           /> */}
-        <p>{author["first_name"]}</p>
+        {/* Conditionally render the author's first name only when data is loaded */}
+        {author ? (
+          <p>
+            <a href={`mailto:${author["email"]}`} target="_blank">{author["first_name"]}</a>
+            </p> // Display the first name once author data is loaded
+        ) : (
+          <p>Loading author...</p> // Display a loading message until author data is available
+        )}
       </div>
     </div>
   );

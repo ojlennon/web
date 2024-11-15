@@ -42,20 +42,26 @@ export default function AddPostForm() {
 
   return (
     <div>
-      <h1>
-        <b>Add Post</b>
-      </h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input type="text" name="title" required />
-        </label>
-        <label>
-          Text:
-          <input type="text" name="text" required />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+      {user_data ? (
+        <div>
+          <h1>
+            <b>Add Post</b>
+          </h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Title:
+              <input type="text" name="title" required />
+            </label>
+            <label>
+              Text:
+              <input type="text" name="text" required />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }
