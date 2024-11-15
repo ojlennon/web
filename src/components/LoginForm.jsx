@@ -17,7 +17,7 @@ export default function LoginForm() {
             console.error("Error logging in:", error.message);
           } else {
             console.log("Log in successful:", data);
-            router.push("/about")
+            router.push("/")
           }
     }
     

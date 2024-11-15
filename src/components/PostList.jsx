@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 export default function PostList() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
+  const [user_data, setUserData] = useState({});
 
   useEffect(() => {
-    supabase.auth.getUser().then((dat) => setData(dat)).then(console.log(data));
-  });
+    supabase.auth.getUser().then((data, error) => setUserData(data))
+    .then(console.log(user_data))
+  },[]);
 
   useEffect(() => {
     fetch("/api/posts")
@@ -22,8 +23,12 @@ export default function PostList() {
   }, []);
   
   if (isLoading) return <p>Loading...</p>;
-  if (!posts) return <p>No profile data</p>;
-  if (!data.user) return <p>No User!</p>
+  if (!posts) return <p>No post data</p>;
+  if (!user_data || !user_data.user) {
+    // console.log("userdata" + !user_data)
+    // console.log("user" + !user_data.user)
+    return <p>No User!</p>
+  } 
   
   return (
     <div style={{ width: "25%", padding: "10px" }}>
