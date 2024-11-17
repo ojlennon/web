@@ -5,11 +5,10 @@ import Image from "next/image";
 import { useState, useEffect, use, Suspense } from "react";
 import { TopBar } from "@/components/TopBar";
 import PostList from "@/components/PostList";
-import Layout from "@/components/layout";
 import Login from "@/components/LoginForm";
 import LoginPage from "@/pages/login";
 import AddPostForm from "@/components/AddPostForm";
-
+import { Box } from "@mui/material";
 
 export default function Home() {
   const router = useRouter();
@@ -18,13 +17,21 @@ export default function Home() {
     router.push("/contact");
   };
 
-
   return (
-    <div>
-      <Layout>
+    <Box sx={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+      <TopBar />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+          background: "#D3D3D3",
+        }}
+      >
         <PostList />
-        <AddPostForm/>
-      </Layout>
+        <AddPostForm />
+      </Box>
 
       {/* <div id="aboutUs">
         <h1 id="aboutTitle">About</h1>
@@ -39,6 +46,6 @@ export default function Home() {
         <a href="">Contact Us</a>
         <a href="">Founders</a>
       </div> */}
-    </div>
+    </Box>
   );
 }

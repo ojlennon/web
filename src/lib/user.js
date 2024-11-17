@@ -1,4 +1,4 @@
-// import { supabase } from "./supabase";
+import { supabase } from "./supabase";
 // import { useState, useEffect } from "react";
 //   const [isLoading, setLoading] = useState(true);
 //   const [user_data, setUserData] = useState(null);
@@ -18,3 +18,10 @@
 //   }, []);
 
 // export default user_data;
+
+const { data, error } = await supabase.auth.getUser();
+const user_data = data.user;
+
+console.log(user_data);
+
+export default user_data;

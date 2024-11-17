@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Divider } from "@mui/material";
+import { Button, Divider, Typography } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
+import user_data from "@/lib/user";
 
 export default function Post(props) {
   const [author, setAuthor] = useState(null);
+  const post = props.post;
   // console.log(props.author_id);
   useEffect(() => {
     const retrieve_user = async () => {
@@ -24,14 +27,26 @@ export default function Post(props) {
       }
     };
     retrieve_user();
-  },[]);
+  }, []);
+  
+
+  async function removePost() {
+    const { error } = await supabase.from("Posts").delete().eq('id', post.id);
+    location.reload();
+  }
 
   return (
-    <div style={{ background: "#A9A9A9", borderRadius: "1%", padding:"3px", width:"250px" }}>
+    <div style={{ background: "#A9A9A9", borderRadius: "5%", padding:"3px", width:"250px" }}>
       <div style={{ display: "flex", justifyContent:"space-between"}}>
         <h1>
           <b>{props.title}</b>
         </h1>
+        {user_data.id === props.author_id ? (
+           <Button onClick={removePost}>
+           <CloseIcon/>
+             </Button>
+        ):(<></>)}
+       
       </div>
       <div>
         <p>{props.text}</p>
@@ -39,8 +54,7 @@ export default function Post(props) {
       <div
         style={{
           display: "flex",
-          gap: "10px",
-          height: "50px",
+          gap: "10px"
         }}
       >
         {/* <img

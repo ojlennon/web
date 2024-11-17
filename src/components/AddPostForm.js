@@ -45,7 +45,7 @@ export default function AddPostForm() {
   return (
     <div className="w-1/4">
       {user_data ? (
-        <div className="">
+        <div className="flex-col justify-items-center">
           <h1>
             <b>Add Post</b>
           </h1>
@@ -68,7 +68,7 @@ export default function AddPostForm() {
               fullWidth
               multiline
             />
-            <Button type="submit" variant="contained" color="primary">
+            <Button type="submit" variant="contained" color="primary" className="mb-10">
               Submit
             </Button>
           </form>

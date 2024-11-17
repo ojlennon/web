@@ -21,15 +21,15 @@
 //         console.log(data);
 //       });
 //   }, []);
-  
+
 //   if (isLoading) return <p>Loading...</p>;
 //   if (!posts) return <p>No post data</p>;
 //   if (!user_data || !user_data.user) {
 //     // console.log("userdata" + !user_data)
 //     // console.log("user" + !user_data.user)
 //     return <p>No User!</p>
-//   } 
-  
+//   }
+
 //   return (
 //     <div style={{ width: "25%", padding: "10px" }}>
 //       {posts.map((post, i) => (
@@ -74,21 +74,34 @@ export default function PostList() {
         console.log("Posts:", data);
       });
   }, []);
-  
+
   if (isLoading) return <p>Loading...</p>;
   if (!posts) return <p>No post data</p>;
   if (!user_data) {
     return <p>No User!</p>;
-  } 
-  
+  }
+
   return (
-    <div style={{display:"flex", flexWrap:"wrap", width: "50%", padding: "10px", background:"red" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-evenly",
+        flexWrap: "wrap",
+        width: "70%",
+        padding: "10px",
+        background: "red",
+      }}
+    >
       {posts.map((post, i) => (
         <div key={"Post_" + i} className="mb-5 ms-5">
-          <Post title={post.title} text={post.text} author_id={post.author_id} />
+          <Post
+            title={post.title}
+            text={post.text}
+            author_id={post.author_id}
+            post={post}
+          />
         </div>
       ))}
     </div>
   );
 }
-

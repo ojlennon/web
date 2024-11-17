@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
-import { Box, Button } from "@mui/material";
+import { AppBar, Toolbar, Box, Button, Typography } from "@mui/material";
 
 export function TopBar() {
   const [user, setUser] = useState(null);
@@ -23,71 +23,68 @@ export function TopBar() {
   }
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        gap: 2,
-        backgroundColor: "gray",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      {/* Left Section */}
-      <Box
+    <AppBar position="sticky" sx={{ backgroundColor: "#0096FF" }}>
+      <Toolbar
         sx={{
           display: "flex",
-          justifyContent: "space-evenly",
+          justifyContent: "space-between",
           alignItems: "center",
-          backgroundColor: "#b4d",
-          gap: 3,
-          p: 2,
-          borderRadius: 1,
         }}
       >
-        <Image
-          src="/michigan.png"
-          alt="Michigan Logo"
-          width={50}
-          height={50}
-          quality={100}
-        />
-        <Link href="/" color="inherit" underline="hover">
-          Home
-        </Link>
-        About
-        <Link href="/projects" color="inherit" underline="hover">
-          Projects
-        </Link>
-        <Link href="/about" color="inherit" underline="hover"></Link>
-      </Box>
+        {/* Left Section */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
+          <Image
+            src="/michigan.png"
+            alt="Michigan Logo"
+            width={50}
+            height={50}
+            quality={100}
+          />
+          <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <Typography variant="h6">Home</Typography>
+          </Link>
+          <Link
+            href="/projects"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Typography variant="h6">Projects</Typography>
+          </Link>
+          <Link
+            href="/about"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Typography variant="h6">About</Typography>
+          </Link>
+        </Box>
 
-      {/* Right Section */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-          backgroundColor: "#cab",
-          gap: 2,
-          p: 2,
-          borderRadius: 1,
-        }}
-      >
-        {user ? (
-          <Button variant="text" onClick={signOut}>
-            Sign Out
-          </Button>
-        ) : (
-          <>
-            <Link href="/login" color="inherit" underline="hover">
-              Login
-            </Link>
-            <Link href="/signup" color="inherit" underline="hover">
-              Sign Up
-            </Link>
-          </>
-        )}
-      </Box>
-    </Box>
+        {/* Right Section */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          {user ? (
+            <Button variant="text" color="white" onClick={signOut}>
+              Sign Out
+            </Button>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Button variant="text" color="inherit">
+                  Login
+                </Button>
+              </Link>
+              <Link
+                href="/signup"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Button variant="text" color="inherit">
+                  Sign Up
+                </Button>
+              </Link>
+            </>
+          )}
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }
