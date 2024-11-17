@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
+import { Box, Button } from "@mui/material";
 
 export function TopBar() {
   const [user, setUser] = useState(null);
@@ -22,22 +23,25 @@ export function TopBar() {
   }
 
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: "flex",
-        gap: "10px",
-        background: "#255",
-        alignContent: "center",
+        gap: 2,
+        backgroundColor: "gray",
+        alignItems: "center",
         justifyContent: "space-between",
       }}
     >
-      <div
-        style={{
+      {/* Left Section */}
+      <Box
+        sx={{
           display: "flex",
           justifyContent: "space-evenly",
           alignItems: "center",
-          background: "#b4d",
-          gap: "20px",
+          backgroundColor: "#b4d",
+          gap: 3,
+          p: 2,
+          borderRadius: 1,
         }}
       >
         <Image
@@ -47,42 +51,43 @@ export function TopBar() {
           height={50}
           quality={100}
         />
-        <p>
-          <Link href="/">Home</Link>
-        </p>
-        <p>
-          <Link href="/about">About</Link>
-        </p>
-        <p>
-          <Link href="/projects">Projects</Link>
-        </p>
-      </div>
-      <div
-        style={{
+        <Link href="/" color="inherit" underline="hover">
+          Home
+        </Link>
+        About
+        <Link href="/projects" color="inherit" underline="hover">
+          Projects
+        </Link>
+        <Link href="/about" color="inherit" underline="hover"></Link>
+      </Box>
+
+      {/* Right Section */}
+      <Box
+        sx={{
           display: "flex",
           justifyContent: "space-evenly",
-          background: "#cab",
-          gap: "10px",
           alignItems: "center",
+          backgroundColor: "#cab",
+          gap: 2,
+          p: 2,
+          borderRadius: 1,
         }}
       >
-        {/* <a href="mailto:owenjlennon@icloud.com">Email</a> */}
-        <p>
-          <a href="mailto:example@example.com" target="_blank">Contact Us</a>
-        </p>
         {user ? (
-          <button onClick={signOut}>Sign Out</button>
+          <Button variant="text" onClick={signOut}>
+            Sign Out
+          </Button>
         ) : (
           <>
-            <p>
-              <Link href="/login">Login</Link>
-            </p>
-            <p>
-              <Link href="/signup">Sign Up</Link>
-            </p>
+            <Link href="/login" color="inherit" underline="hover">
+              Login
+            </Link>
+            <Link href="/signup" color="inherit" underline="hover">
+              Sign Up
+            </Link>
           </>
         )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

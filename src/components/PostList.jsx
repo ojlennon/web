@@ -44,6 +44,7 @@
 import { supabase } from "@/lib/supabase";
 import Post from "../components/Post";
 import { useEffect, useState } from "react";
+import user_data from "@/lib/user";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
@@ -81,9 +82,9 @@ export default function PostList() {
   } 
   
   return (
-    <div style={{ width: "25%", padding: "10px" }}>
+    <div style={{display:"flex", flexWrap:"wrap", width: "50%", padding: "10px", background:"red" }}>
       {posts.map((post, i) => (
-        <div key={"Post_" + i} className="mb-5">
+        <div key={"Post_" + i} className="mb-5 ms-5">
           <Post title={post.title} text={post.text} author_id={post.author_id} />
         </div>
       ))}

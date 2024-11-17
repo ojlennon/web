@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { TextField, Button, Box } from "@mui/material";
 
 export default function AddPostForm() {
   const [user_data, setUserData] = useState(null);
@@ -38,25 +39,38 @@ export default function AddPostForm() {
         },
       ])
       .select();
+    location.reload();
   };
 
   return (
-    <div>
+    <div className="w-1/4">
       {user_data ? (
-        <div>
+        <div className="">
           <h1>
             <b>Add Post</b>
           </h1>
+
           <form onSubmit={handleSubmit}>
-            <label>
-              Title:
-              <input type="text" name="title" required />
-            </label>
-            <label>
-              Text:
-              <input type="text" name="text" required />
-            </label>
-            <button type="submit">Submit</button>
+            <Box className="my-2">
+              <TextField
+                label="Title"
+                name="title"
+                required
+                variant="outlined"
+                fullWidth
+              />
+            </Box>
+            <TextField
+              label="Text"
+              name="text"
+              required
+              variant="outlined"
+              fullWidth
+              multiline
+            />
+            <Button type="submit" variant="contained" color="primary">
+              Submit
+            </Button>
           </form>
         </div>
       ) : (

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { Divider } from "@mui/material";
 
 export default function Post(props) {
   const [author, setAuthor] = useState(null);
@@ -26,8 +27,8 @@ export default function Post(props) {
   },[]);
 
   return (
-    <div style={{ background: "#A9A9A9", borderRadius: "1%" }}>
-      <div style={{}}>
+    <div style={{ background: "#A9A9A9", borderRadius: "1%", padding:"3px", width:"250px" }}>
+      <div style={{ display: "flex", justifyContent:"space-between"}}>
         <h1>
           <b>{props.title}</b>
         </h1>
