@@ -43,7 +43,7 @@ export default function AddPostForm() {
   };
 
   return (
-    <div className="w-1/4">
+    <div>
       {user_data ? (
         <div className="flex-col justify-items-center">
           <h1>

@@ -17,35 +17,63 @@ export default function Home() {
     router.push("/contact");
   };
 
+  // return (
+  //   <Box sx={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+  //     <TopBar />
+  //     <Box
+  //       sx={{
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         flexDirection: "row",
+  //         alignItems: "top",
+  //         background: "#D3D3D3",
+  //       }}
+  //     >
+  //       <PostList />
+  //       <AddPostForm />
+  //     </Box>
+  //   </Box>
+  // );
   return (
-    <Box sx={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+    <>
       <TopBar />
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center",
-          background: "#D3D3D3",
+          justifyContent: "center", // Center the PostList horizontally
+          alignItems: "flex-start", // Align items at the top of the container
+          height: "100vh", // Full viewport height to center the content
+          background: "purple", // Page background color
+          padding: 2, // Optional padding
         }}
       >
-        <PostList />
-        <AddPostForm />
+        <Box
+          sx={{
+            width: "80%", // Adjust width of PostList box
+            backgroundColor: "white", // Optional background for PostList area
+            padding: 2,
+            boxShadow: 2,
+            borderRadius: 2,
+            overflowY: "auto", // Allow scrolling if content overflows
+            maxHeight: "80vh", // Restrict height for better layout
+          }}
+        >
+          <PostList />
+        </Box>
+        <Box
+          sx={{
+            width: "30%", // Adjust width of AddPostForm box
+            marginLeft: 4, // Space between PostList and AddPostForm
+            backgroundColor: "white", // Optional background
+            padding: 1,
+            boxShadow: 2,
+            borderRadius: 2,
+            height: "fit-content", // Prevent stretching to full height
+          }}
+        >
+          <AddPostForm />
+        </Box>
       </Box>
-
-      {/* <div id="aboutUs">
-        <h1 id="aboutTitle">About</h1>
-        <p>
-          Our idea is not unique. Well, only if you think broadly. If you are
-          looking for qualified people, you use LinkedIn...
-        </p>
-      </div>
-
-      <div id="footnote">
-        <a href="">FAQ</a>
-        <a href="">Contact Us</a>
-        <a href="">Founders</a>
-      </div> */}
-    </Box>
+    </>
   );
 }
