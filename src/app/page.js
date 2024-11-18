@@ -43,7 +43,7 @@ export default function Home() {
           justifyContent: "center", // Center the PostList horizontally
           alignItems: "flex-start", // Align items at the top of the container
           height: "100vh", // Full viewport height to center the content
-          background: "purple", // Page background color
+          background: "#f2f2f2", // Page background color
           padding: 2, // Optional padding
         }}
       >

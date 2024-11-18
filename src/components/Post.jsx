@@ -115,7 +115,7 @@ const Post = (props) => {
     <Card
       sx={{
         backgroundColor: "#A9A9A9",
-        padding: "3px",
+        padding: "1px",
         width: "250px",
         border: 1,
         borderColor: "grey.300",
