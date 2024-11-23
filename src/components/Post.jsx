@@ -76,7 +76,7 @@
 //   );
 // }
 
-import { Card, CardContent, Typography, Button } from "@mui/material";
+import { Card, CardContent, Typography, Button, Link } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import user_data from "@/lib/user";
 import { useEffect, useState } from "react";
@@ -112,6 +112,7 @@ const Post = (props) => {
     location.reload();
   }
   return (
+    
     <Card
       sx={{
         backgroundColor: "#A9A9A9",
@@ -124,6 +125,7 @@ const Post = (props) => {
       }}
     >
       <CardContent>
+      <Link href={`/PostPage/${post.id}`} underline="none">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h6" component="h1" fontWeight="bold">
             {props.title}
@@ -136,7 +138,8 @@ const Post = (props) => {
         </div>
         <Typography variant="body2" component="p">
           {props.text}
-        </Typography>
+          </Typography>
+          </Link>
         <div style={{ display: "flex", gap: "10px" }}>
           {author ? (
             <Typography variant="body2">
@@ -153,7 +156,8 @@ const Post = (props) => {
           )}
         </div>
       </CardContent>
-    </Card>
+      </Card>
+      
   );
 };
 
